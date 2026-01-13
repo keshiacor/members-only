@@ -9,9 +9,11 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-
-
-
+  # to be implemented
+  def create
+    true
+  end
+  
   private
   def require_login
     unless current_user.logged_in?
