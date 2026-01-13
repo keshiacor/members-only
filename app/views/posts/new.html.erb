@@ -1,0 +1,31 @@
+<div class="form-container">
+  <!-- display error messages related to post if any are present -->
+  <%= form_with model: @post, class: "new-post-form" do |form| %>
+    <% if @post.errors.any? %>
+    <div class="error-messages">
+      <h2> <%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved: </h2>
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+      <% end %>
+
+      <!-- form fields for the post title and description -->
+      <div class="form-field">
+        <%= form.label :title, "Title:" %>
+        <%= form.text_field :title %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :description, "Description:" %>
+        <%= form.text_area :description %>
+      </div>
+
+      <div class="form-submit">
+        <%= form.submit "Save Post" %>
+      </div>
+  <% end %>
+
+
+</div>
