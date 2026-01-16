@@ -21,13 +21,6 @@ class PostsController < ApplicationController
   end
 
    private
-    def require_login
-        unless current_user.logged_in?
-          flash[:error] = "You must first be logged in to access this page."
-          redirect_to new_user_session_path
-        end
-    end
-
     def post_params
       params.require(:post).permit(:title, :description)
     end
