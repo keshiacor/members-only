@@ -9,14 +9,14 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-  # to be implemented
   def create
-     @post = current_user.posts.build(post_params)
+    @post = current_user.posts.build(post_params)
 
     if @post.save
       redirect_to posts_path, notice: "Your post was successfully created!"
     else
-      render :new, status: :unprocessable_entity, notice: "There was an issue creating your post, please try again."
+      flash.now[:notice] = "There was an issue creating your post, please try again."
+      render :new, status: :unprocessable_entity
     end
   end
 

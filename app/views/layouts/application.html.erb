@@ -20,7 +20,7 @@
      <p class="alert"><%= alert %></p>
 
 
-    <div className="navbar">
+    <div class="navbar">
       <% if user_signed_in? && current_page?(root_path) %>
         <%= link_to "New Post", new_post_path %>
         <%= button_to "Log out", destroy_user_session_path, method: :delete %>
