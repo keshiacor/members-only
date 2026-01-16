@@ -11,14 +11,24 @@ class PostsController < ApplicationController
 
   # to be implemented
   def create
-    true
+     @post = current_user.posts.build(post_params)
+
+    if @post.save
+      redirect_to posts_path, notice: "Your post was successfully created!"
+    else
+      render :new, status: :unprocessable_entity, notice: "There was an issue creating your post, please try again."
+    end
   end
 
-  ## private
-  # #def require_login
-  # #unless current_user.logged_in?
-  # #flash[:error] = "You must first be logged in to access this page."
-  # #redirect_to login_path
-  ## end
-  # #end
+   private
+    def require_login
+        unless current_user.logged_in?
+          flash[:error] = "You must first be logged in to access this page."
+          redirect_to new_user_session_path
+        end
+    end
+
+    def post_params
+      params.require(:post).permit(:title, :description)
+    end
 end
