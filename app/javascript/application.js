@@ -2,7 +2,7 @@
 import "@hotwired/turbo-rails";
 import "controllers";
 
-document.addEventListener("turbo:load", () => {
+document.addEventListener("turbo:before-cache", () => {
   const flashes = document.querySelectorAll(".notice, .alert");
 
   flashes.forEach((flash) => {
