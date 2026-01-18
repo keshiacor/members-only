@@ -1,10 +1,240 @@
 /*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
+ * Global styles for the Members Only blog
+ * Retro-inspired palette with browns, beige, and light pink.
  */
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	background-color: #fbe4e6; /* light retro pink */
+	color: #2b1b16;
+}
+
+h1 {
+	/* keep default black heading per requirements */
+	color: #000000;
+	text-align: center;
+	margin-top: 2rem;
+}
+
+.main-content {
+	max-width: 800px;
+	margin: 4.5rem auto 2rem;
+	padding: 0 1rem 2rem;
+}
+
+/* Navbar */
+
+.navbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: flex-end;
+	padding: 0.75rem 1.5rem;
+	background: rgba(245, 230, 211, 0.95); /* light beige */
+	border-bottom: 1px solid #7b4b2a; /* brown */
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+	z-index: 100;
+}
+
+.navbar-links {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.nav-link,
+.nav-button {
+	font-size: 0.95rem;
+	text-decoration: none;
+	padding: 0.4rem 0.9rem;
+	border-radius: 999px;
+	border: 1px solid #7b4b2a;
+	background-color: #f9efe0;
+	color: #4a2f1b;
+	cursor: pointer;
+}
+
+.nav-link:hover,
+.nav-button:hover {
+	background-color: #f0d5d7; /* slightly deeper pink */
+}
+
+.navbar form {
+	display: inline-block;
+	margin: 0;
+}
+
+.navbar form .nav-button {
+	border: none;
+}
+
+/* Flash messages */
+
+.notice,
+.alert {
+	margin-top: 1rem;
+	padding: 0.5rem 0.75rem;
+	border-radius: 6px;
+	font-size: 0.9rem;
+}
+
+.notice {
+	background-color: #e8f5e9;
+	color: #1b5e20;
+}
+
+.alert {
+	background-color: #ffebee;
+	color: #b71c1c;
+}
+
+/* Posts index */
+
+.posts-page {
+	margin-top: 1.5rem;
+}
+
+.posts-list {
+	margin-top: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.post-card {
+	border: 1px solid #7b4b2a; /* slim brown border */
+	background: linear-gradient(135deg, #f5e6d3, #fbe4e6); /* beige to light pink */
+	border-radius: 10px;
+	padding: 1rem 1.25rem;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.04);
+}
+
+.post-title {
+	margin: 0 0 0.5rem;
+}
+
+.post-body {
+	margin: 0 0 0.75rem;
+}
+
+.post-meta {
+	margin: 0;
+	font-size: 0.9rem;
+	color: #594030;
+}
+
+.post-author {
+	font-weight: 600;
+}
+
+/* New post form */
+
+.form-container {
+	margin-top: 2rem;
+	padding: 1.5rem 1.75rem;
+	border-radius: 12px;
+	background-color: #f9efe0; /* soft beige */
+	border: 1px solid #7b4b2a;
+}
+
+.new-post-form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.form-field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem; /* small spacing between label and field */
+}
+
+.form-field label {
+	font-weight: 600;
+	color: #4a2f1b;
+}
+
+.input-field {
+	padding: 0.5rem 0.6rem;
+	border-radius: 8px;
+	border: 1px solid #c9a58a;
+	background-color: #fff7f4;
+	font-size: 0.95rem;
+}
+
+.textarea-field {
+	min-height: 120px;
+	resize: vertical;
+}
+
+.input-field:focus {
+	outline: none;
+	border-color: #7b4b2a;
+	box-shadow: 0 0 0 2px rgba(123, 75, 42, 0.2);
+}
+
+/* Inline error styling inside fields */
+
+.input-error {
+	border-color: #b00020;
+	background-color: #ffeef0;
+}
+
+.input-error::placeholder {
+	color: #b00020;
+}
+
+.form-submit {
+	margin-top: 0.5rem;
+}
+
+.primary-button {
+	padding: 0.55rem 1.4rem;
+	border-radius: 999px;
+	border: 1px solid #7b4b2a;
+	background-color: #f0d5d7;
+	color: #4a2f1b;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.primary-button:hover {
+	background-color: #f5bfc4;
+}
+
+.auth-links {
+	margin-top: 1rem;
+	font-size: 0.9rem;
+}
+
+.remember-label {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	font-size: 0.9rem;
+}
+
+.back-link {
+	display: inline-block;
+	margin-top: 1rem;
+	color: #7b4b2a;
+}
+
+.back-link:hover {
+	text-decoration: underline;
+}
+
+.notice,
+.alert {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Applied by JS to fade + slide up, then removed from DOM */
+.flash-hide {
+  opacity: 0;
+  transform: translateY(-4px);
+}

@@ -9,25 +9,28 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%# Application-wide stylesheet %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
-     <p class="notice"><%= notice %></p>
-     <p class="alert"><%= alert %></p>
+    <header class="navbar">
+      <div class="navbar-links">
+        <% if user_signed_in? %>
+          <%= link_to "New Post", new_post_path, class: "nav-link" %>
+          <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "nav-button" %>
+        <% else %>
+          <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
+          <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+        <% end %>
+      </div>
+    </header>
 
-
-    <div class="navbar">
-      <% if user_signed_in? && current_page?(root_path) %>
-        <%= link_to "New Post", new_post_path %>
-        <%= button_to "Log out", destroy_user_session_path, method: :delete %>
-      <% elsif current_page?(root_path)  %>
-        <%= link_to "Log in", new_user_session_path %>
-        <%= link_to "Sign up", new_user_registration_path%>
-      <% end %>
-    </div>
+    <main class="main-content">
+      <%= yield %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </main>
   </body>
 </html>
