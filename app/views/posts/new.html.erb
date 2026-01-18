@@ -1,32 +1,26 @@
 <div class="form-container">
-  <!-- display error messages related to post if any are present -->
   <%= form_with model: @post, class: "new-post-form" do |form| %>
-    <% if @post.errors.any? %>
-    <div class="error-messages">
-      <h2> <%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved: </h2>
-      <ul>
-        <% @post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-      <% end %>
+    <!-- form fields for the post title and description -->
+    <div class="form-field">
+      <%= form.label :title, "Title:" %>
+      <% title_error = @post.errors[:title].first %>
+      <%= form.text_field :title,
+            class: ["input-field", ("input-error" if title_error)].compact.join(" "),
+            placeholder: (title_error || "Enter a title") %>
+    </div>
 
-      <!-- form fields for the post title and description -->
-      <div class="form-field">
-        <%= form.label :title, "Title:" %>
-        <%= form.text_field :title %>
-      </div>
+    <div class="form-field">
+      <%= form.label :description, "Description:" %>
+      <% description_error = @post.errors[:description].first %>
+      <%= form.text_area :description,
+            class: ["input-field", "textarea-field", ("input-error" if description_error)].compact.join(" "),
+            placeholder: (description_error || "Write your post here") %>
+    </div>
 
-      <div class="form-field">
-        <%= form.label :description, "Description:" %>
-        <%= form.text_area :description %>
-      </div>
-
-      <div class="form-submit">
-        <%= form.submit "Save Post" %>
-      </div>
+    <div class="form-submit">
+      <%= form.submit "Save Post", class: "primary-button" %>
+    </div>
   <% end %>
 
-  <%= link_to "Back to homepage", root_path %>
-
+  <%= link_to "Back to homepage", root_path, class: "back-link" %>
 </div>
