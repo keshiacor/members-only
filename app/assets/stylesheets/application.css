@@ -73,13 +73,19 @@ h1 {
 }
 
 /* Flash messages */
-
 .notice,
 .alert {
-	margin-top: 1rem;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  margin-top: 1rem;
 	padding: 0.5rem 0.75rem;
 	border-radius: 6px;
 	font-size: 0.9rem;
+}
+
+/* Applied by JS to fade + slide up, then removed from DOM */
+.flash-hide {
+  opacity: 0;
+  transform: translateY(-4px);
 }
 
 .notice {
@@ -188,6 +194,12 @@ h1 {
 	color: #b00020;
 }
 
+.field-error {
+	color: #b00020;
+	font-size: 0.85rem;
+	margin-top: 0.1rem;
+}
+
 .form-submit {
 	margin-top: 0.5rem;
 }
@@ -228,13 +240,3 @@ h1 {
 	text-decoration: underline;
 }
 
-.notice,
-.alert {
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-/* Applied by JS to fade + slide up, then removed from DOM */
-.flash-hide {
-  opacity: 0;
-  transform: translateY(-4px);
-}

@@ -6,7 +6,10 @@
       <% title_error = @post.errors[:title].first %>
       <%= form.text_field :title,
             class: ["input-field", ("input-error" if title_error)].compact.join(" "),
-            placeholder: (title_error || "Enter a title") %>
+            placeholder: "Enter a title" %>
+      <% if title_error.present? %>
+        <p class="field-error"><%= title_error %></p>
+      <% end %>
     </div>
 
     <div class="form-field">
@@ -14,7 +17,10 @@
       <% description_error = @post.errors[:description].first %>
       <%= form.text_area :description,
             class: ["input-field", "textarea-field", ("input-error" if description_error)].compact.join(" "),
-            placeholder: (description_error || "Write your post here") %>
+            placeholder: "Write your post here" %>
+      <% if description_error.present? %>
+        <p class="field-error"><%= description_error %></p>
+      <% end %>
     </div>
 
     <div class="form-submit">
