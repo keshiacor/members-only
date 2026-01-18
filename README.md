@@ -1,7 +1,5 @@
 # Members Only
 
-![Members Only app](app-screenshot.png)
-
 ## Description
 
 Members Only is a Rails application built as part of The Odin Project curriculum to practice authentication with Devise. Users can sign up, log in, and create simple blog-style posts. Signed-in members can see who authored each post, while visitors who are not logged in see anonymous posts (author details are hidden).
@@ -76,14 +74,6 @@ Visit `http://localhost:3000` and sign up for an account to start creating posts
 - propshaft
 - turbo-rails
 - stimulus-rails
-
-## Roadmap / Upcoming Work
-
-- [ ] Allow members to edit and delete their own posts.
-- [ ] Add user profile pages showing a member’s posts.
-- [ ] Improve test coverage for authentication and authorization flows.
-- [ ] Add pagination or infinite scroll for posts.
-- [ ] Deploy the app and add a production demo link.
 
 <div>
 	<p align="left">
